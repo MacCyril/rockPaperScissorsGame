@@ -2,6 +2,8 @@
 // ** getComputerChoice randomly selects between `rock` `paper` `scissors` and returns that string **
 // getComputerChoice() 👉 'Rock'
 // getComputerChoice() 👉 'Scissors'
+let totalScore = {playerScore:0 , computerScore:0}
+
 function getComputerChoice(){
     // getting random choices fom the computer
     const rpsChoice = ['Rock', 'Paper', 'Scissors']
@@ -50,7 +52,7 @@ function showResult(score, playerChoice,computerChoice){
 
   //using template literals to show which is human and computer choice
  handsDiv.innerText = `🧑${playerChoice} VS 🤖${computerChoice}`
-
+  playerScoreDiv.innerText = `your score: ${totalScore.playerScore}`
 
     }
 
@@ -60,6 +62,7 @@ function onClickRPS(playerChoice) {
     const computerChoice = getComputerChoice()
     console.log({computerChoice})
    const score = getResult(playerChoice, computerChoice)
+   totalScore['playerScore'] += score
    console.log({score})
    showResult(score, playerChoice, computerChoice)
 
@@ -88,8 +91,17 @@ function playGame() {
 // ** endGame function clears all the text on the DOM **
 function endGame() {
     const resultDiv = document.getElementById('result');
-  const handsDiv = document.getElementById('hands')
+  const handsDiv = document.getElementById('hands');
+  const playerScoreDiv = document.getElementById('player-score');
+
+  playerScoreDiv.innerText = ''
    resultDiv.innerText = ''
    handsDiv.innerText = ''
 }
 playGame()  
+
+//       game improvement ideas ------------------------
+
+/// add animation to game effect asin when a player picks an object 
+// and loses it should display a short clip and if player wins it should 
+// display another short clip else another clip
